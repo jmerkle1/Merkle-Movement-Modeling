@@ -1,0 +1,25 @@
+
+    model{
+    
+    # priors on movement parameters 
+    scale ~ dnorm(0.0, 0.01)T(0.0,)    
+    shape ~ dnorm(0.0, 0.01)T(0.0,)
+    beta ~ dunif(0,1)
+    #beta ~ dnorm(0, 0.01)T(0.0,) 
+    rho ~ dunif(0,1)
+    
+    Pi <- 3.14159265359
+    
+    for (t in 1:n) {
+    
+    # likelihood for steps
+    steps[t] ~ dweib(shape, scale)  
+    
+    # likelihood for turns (wrapped cauchy distribution)
+    ya[t] <- (1-beta)*sin(taprev[t]) + beta*sin(talc[t])
+    xa[t] <- (1-beta)*cos(taprev[t]) + beta*cos(talc[t])  
+    mu[t] <- 2*atan(ya[t]/(sqrt(pow(ya[t],2) + pow(xa[t],2))+xa[t]))
+    ones[t] ~ dbern( wc[t] )
+    wc[t] <- (1/(2*Pi)*(1-pow(rho,2))/(1+pow(rho,2)-2*rho*cos(mu[t]-TAs[t])))/ 100
+    }    
+    }
