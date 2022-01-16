@@ -67,6 +67,8 @@ CalcMovParams <- function(data = data, id_name="id", date_name="date", burst = d
     stop("You have NAs in your date column")
   if(any(is.na(data[,id_name]) == TRUE)) 
     stop("You have NAs in your id column")
+  if(max(unique(diff(burst))) > 1)
+    stop("Your burst vector does not have sequantil integers, or is out of order.")
 
   #create indicator where NAs should be put
   flags <- c(diff(burst),1)
