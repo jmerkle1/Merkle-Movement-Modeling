@@ -23,7 +23,11 @@ CalcBurst <- function(data = data, id = TRUE, id_name="id", date_name="date", Tm
     stop("data is not a dataframe!")
   if(inherits(data, "sf") == TRUE){
     data <- st_set_geometry(data, NULL)
-    }
+  }
+  if(inherits(data, "tbl_df") == TRUE){
+    data <- data.frame(data)
+  }
+  
   if(!inherits(data[,date_name], "POSIXct")) 
     stop(print("date column is not POSIXct"))
   key <- 1:nrow(data)
