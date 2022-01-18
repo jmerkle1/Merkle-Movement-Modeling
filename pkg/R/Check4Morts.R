@@ -44,7 +44,7 @@ Check4Morts <- function(data=data, dist_thresh = 50, time_thresh = 24, id_name="
   result <- cbind(result, data[data$key %in% rwsmax, date_name])
   names(result) <- c("id","date_start","date_end")
   result$mort_time_hrs <- as.numeric(difftime(result$date_end,result$date_start,
-                               tz=attr(data[,date_name],"tzone"), units="hours"))
+                                              tz=attr(data[,date_name],"tzone"), units="hours"))
   result <- result[result$mort_time_hrs > time_thresh,]
   if(nrow(result)==0){
     print("Your data look good given your parameters!")

@@ -6,7 +6,7 @@
 # into the point and going away from the point.
 
 FindProblemPts <- function(dat = data, date_name="date",
-                             burst = data$burst, id_name="id", speedlim=3) {
+                           burst = data$burst, id_name="id", speedlim=3) {
 
   #some checks to start
 
