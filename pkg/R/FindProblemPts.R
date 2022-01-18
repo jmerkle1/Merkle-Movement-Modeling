@@ -9,7 +9,7 @@ FindProblemPts <- function(dat = data, date_name="date",
                            burst = data$burst, id_name="id", speedlim=3) {
 
   #some checks to start
-
+  require(sf)
   if(inherits(dat, "sf") != TRUE) stop("data is not a sfc_POINT dataframe")
   orig <- dat
   dat$xtmp <- st_coordinates(dat)[,1]

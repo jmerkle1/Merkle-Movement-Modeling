@@ -1,10 +1,28 @@
-# Function to identify if and when you have mortalies, or
-# periods of time when you animal was not moving, given
-# a dist (in m) and time (hrs) threshold.
-# data must be ordered and have columns dist, id, date, from mov.param()...
+#' Function to identify if and when you have mortalies, or periods of time when you animal was not moving, given a dist (in m) and time (hrs) threshold.
+#'
+#' Data must be ordered and have columns dist, id, date, from mov.param(). Written and updated by Jerod Merkle. Last updated January 2021.
+#'
+#' @param data A dataframe or sf POINT dataframe with a posix column and an animal id column (optional)
+#' @param dist_thresh Distance threshold (in meters) for how far the animal can move without being considered alive.
+#' @param time_thresh Time threshold (in hrs) for how long the animal needs to move less than the dist_thresh without being considered alive.
+#' @param id_name A character specifying the name of the column representing animal ID.
+#' @param date_name  A character specifying the name of the column representing date and time stamps of the locations.
+#'
+#' @return Returns a datafame denoting all mortlities, including a column for animal ID, start time and end time of the mortality event.
+#'
+#' @examples
+#' #To come
+#'
+#' @export
 
+Check4Morts <- function(data=data,
+                        dist_thresh = 50,
+                        time_thresh = 24,
+                        id_name="id",
+                        date_name="date"){
 
-Check4Morts <- function(data=data, dist_thresh = 50, time_thresh = 24, id_name="id", date_name="date"){
+  require(sf)
+
   if(inherits(data, "sf") != TRUE) stop("data is not a dataframe")
   if(any(colnames(data) == date_name) == FALSE) stop(print("Your date_name is incorrect."))
   if(any(colnames(data) == id_name) == FALSE) stop(print("Your id_name is incorrect."))

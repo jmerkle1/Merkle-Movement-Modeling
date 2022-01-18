@@ -2,3 +2,4 @@
 
 export(CalcBurst)
 export(CalcMovParams)
+export(Check4Morts)
