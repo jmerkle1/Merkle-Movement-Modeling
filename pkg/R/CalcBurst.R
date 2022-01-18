@@ -19,6 +19,8 @@
 #' @export
 
 CalcBurst <- function(data = data, id = TRUE, id_name="id", date_name="date", Tmax = 10800){
+
+  requireNamespace(sf)
   if(inherits(data, "data.frame") != TRUE)
     stop("data is not a dataframe!")
   if(inherits(data, "sf") == TRUE){
