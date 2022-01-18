@@ -45,7 +45,9 @@ CalcMovParams <- function(data = data, id_name="id", date_name="date", burst = d
   data$xtmp <- st_coordinates(data)[,1]
   data$ytmp <- st_coordinates(data)[,2]
   data <- st_set_geometry(data, NULL)    #need to remove the geometry so easier to work with
-  
+  if(inherits(data, "tbl_df") == TRUE){  # take out of dumb tibble!
+    data <- data.frame(data)
+  }
   if(any(colnames(data) == date_name) == FALSE) 
     stop(print("Your date_name is not correct."))
   if(any(colnames(data) == id_name) == FALSE) 
