@@ -27,9 +27,5 @@ Returns the same data.frame entered with the addition of the following columns: 
 movement params will only be calculated for sequential relocations denoted by the burst vector. Written by Jerod Merkle. Last updated January 2021.
 }
 \examples{
-#order database first
-data <- data[order(data$id, data$date),]
-# example with 3 hr relocation data and multiple ids. Setting Tmax to 7 hours, and thus two points are connected even if a missed fix in between them (i.e., a 6 hr step).
-data$burst <- CalcBurst(data=data, id = TRUE, id_name="id", date_name="date", Tmax = 3600*7)
-data <- CalcMovParams(data=data, id_name = "id", date_name = "date", burst=data$burst)
+# none
 }

@@ -30,9 +30,6 @@ Returns a vector with integers of the same value denoting the same burst. If the
 It is based on two points connected in time, where row i is connected with row i+1. Written and updated by Jerod Merkle. Last updated January 2021.
 }
 \examples{
-#order database first
-data <- data[order(data$id, data$date),]
-# example with 3 hr relocation data and multiple ids. Setting Tmax to 7 hours, and thus two points are connected even if a missed fix in between them (i.e., a 6 hr step).
-data$burst <- CalcBurst(data=data, id = TRUE, id_name="id", date_name="date", Tmax = 3600*7)
+# none
 
 }

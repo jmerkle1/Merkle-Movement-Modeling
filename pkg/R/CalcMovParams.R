@@ -10,11 +10,7 @@
 #' @return Returns the same data.frame entered with the addition of the following columns: dist (distance between steps in meters), dt (time elapsed bewteen steps in seconds), speed (meters/second), abs.angle (angle moved relative no north, in degrees), rel.angle (angle moved relative to the direction of the previous step, in degrees), and StepFlag (logical, denoting whether a step is connected and has all movement params calculated)
 #'
 #' @examples
-#' #order database first
-#' data <- data[order(data$id, data$date),]
-#' # example with 3 hr relocation data and multiple ids. Setting Tmax to 7 hours, and thus two points are connected even if a missed fix in between them (i.e., a 6 hr step).
-#' data$burst <- CalcBurst(data=data, id = TRUE, id_name="id", date_name="date", Tmax = 3600*7)
-#' data <- CalcMovParams(data=data, id_name = "id", date_name = "date", burst=data$burst)
+#' # none
 
 #' @export
 
